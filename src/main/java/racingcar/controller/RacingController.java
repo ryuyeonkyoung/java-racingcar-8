@@ -17,7 +17,9 @@ public class RacingController {
     }
 
     public void start() {
-        String input = inputView.inputCars();
-        Cars cars = inputView.parseInputToCars(input);
+        Cars cars = inputView.inputCars();
+        int tryNum = inputView.inputTryNum();
+
+
     }
 }

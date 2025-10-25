@@ -9,7 +9,8 @@ import racingcar.exception.ErrorMessage;
 
 public class InputView {
 
-    public static final String INPUT_INFORMATION = "입력 문구 : ";
+    public static final String INPUT_INFORMATION = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    public static final String INPUT_TRY_NUM_INFORMATION = "시도할 횟수는 몇 회인가요?";
 
     private InputView() {
     }
@@ -18,16 +19,21 @@ public class InputView {
         return new InputView();
     }
 
-    public String inputCars() {
+    public Cars inputCars() {
         printInputInfo();
         String input = userInput();
-        Cars cars = parseInputToCars(input);
-        return input;
+        validateDelimiter(input);
+        return parseInputToCars(input);
+    }
+
+    public int inputTryNum() {
+        printInputTryNumInfo();
+        String input = userInput();
+        return Integer.parseInt(input);
     }
 
     // ??
     public Cars parseInputToCars(String input) {
-        validateDelimiter(input);
         List<Car> cars = Arrays.stream(input.split(","))
                 .map(s -> {
                     return Car.of(s, 0);
@@ -48,7 +54,11 @@ public class InputView {
     }
 
     private void printInputInfo() {
-        System.out.print(INPUT_INFORMATION);
+        System.out.println(INPUT_INFORMATION);
+    }
+
+    private void printInputTryNumInfo() {
+        System.out.println(INPUT_TRY_NUM_INFORMATION);
     }
 
     private void validateInput(String input) {

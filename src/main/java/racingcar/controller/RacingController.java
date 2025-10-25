@@ -1,21 +1,19 @@
 package racingcar.controller;
 
-import java.util.List;
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.service.CarService;
+import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class CarController {
+public class RacingController {
     private final InputView inputView;
     private final OutputView outputView;
-    private final CarService carService;
+    private final RacingService racingService;
 
-    public CarController(InputView inputView, OutputView outputView, CarService carService) {
+    public RacingController(InputView inputView, OutputView outputView, RacingService racingService) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.carService = carService;
+        this.racingService = racingService;
     }
 
     public void start() {

@@ -1,4 +1,4 @@
 package racingcar.service;
 
-public class CarService {
+public class RacingService {
 }

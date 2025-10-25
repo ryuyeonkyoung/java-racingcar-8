@@ -31,6 +31,42 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차_이름_5차_초과_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,b,cdefghijklm", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("[ERROR] 자동차 이름은 5자 이하만 가능합니다.")
+        );
+    }
+
+    @Test
+    void 자동차_중복_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abcdefghi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("[ERROR] 중복되는 차의 이름이 있습니다.")
+        );
+    }
+
+    @Test
+    void 시도_횟수_비정수_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,b,c", "문자열"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("[ERROR] 정수가 아닌 값이 입력되었습니다.")
+        );
+    }
+
+    @Test
+    void 자동차_개수_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("[ERROR] 자동차는 2대 이상 필요합니다.")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

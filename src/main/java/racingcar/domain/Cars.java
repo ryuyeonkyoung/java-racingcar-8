@@ -16,7 +16,7 @@ public class Cars{
     private void validateCarNameLength(List<Car> cars) {
         for (Car car : cars ) {
             if (car.getName().length() > 5) {
-                throw new IllegalArgumentException(ErrorMessage.EXCEPTION_NOT_BLANK.getMessage());
+                throw new IllegalArgumentException(ErrorMessage.EXCEPTION_CAR_LENGTH_OVERFLOW.getMessage());
             }
         }
     }

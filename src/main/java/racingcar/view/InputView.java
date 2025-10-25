@@ -48,7 +48,7 @@ public class InputView {
 
     private void validateDelimiter(String input) {
         if (!input.contains(",")) {
-            throw new IllegalArgumentException(ErrorMessage.EXCEPTION_DELIMITER_NOT_CORRECT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.EXCEPTION_ONLY_ONE_CAR.getMessage());
         }
     }
 

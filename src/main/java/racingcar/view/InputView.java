@@ -29,7 +29,12 @@ public class InputView {
     public int inputTryNum() {
         printInputTryNumInfo();
         String input = userInput();
-        return Integer.parseInt(input);
+
+        try{
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException(ErrorMessage.EXCEPTION_NOT_INTEGER_TYPE.getMessage());
+        }
     }
 
     // ??

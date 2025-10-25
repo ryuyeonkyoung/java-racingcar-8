@@ -12,14 +12,15 @@ import racingcar.domain.Cars;
 // - [ ] 전진 또는 멈춤 여부에 따라 차를 움직인다.
 public class RacingService {
 
-    public Cars startRacing(int tryNum, Cars cars) {
+    public List<Cars> startRacing(int tryNum, Cars cars) {
+        List<Cars> carsHistory = new ArrayList<>();
         Cars nextLevelCars = null;
 
         for (int i = 0; i < tryNum; i++) {
-            nextLevelCars = moveCars(cars);
+            carsHistory.add(moveCars(cars));
         }
 
-        return nextLevelCars;
+        return carsHistory;
     }
 
     // TODO: Cars 책임 검토

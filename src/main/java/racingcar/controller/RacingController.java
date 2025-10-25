@@ -19,10 +19,7 @@ public class RacingController {
     public void start() {
         Cars cars = inputView.inputCars();
         int tryNum = inputView.inputTryNum();
-
-        cars = racingService.startRacing(tryNum, cars);
-
-//        outputView.printResult(cars);
+        outputView.printResults(racingService.startRacing(tryNum, cars));
 
     }
 }

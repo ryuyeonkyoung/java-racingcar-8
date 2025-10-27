@@ -23,7 +23,7 @@ public class InputView {
     public Cars inputCars() {
         printInputInfo();
         String input = userInput();
-        validateDelimiter(input);
+        validateCarNum(input);
         validateValueMissing(input);
         return parseInputToCars(input);
     }
@@ -45,16 +45,24 @@ public class InputView {
         return new Cars(cars);
     }
 
-    private void validateDelimiter(String input) {
-        if (!input.contains(INPUT_DELIMITER)) {
+    private void validateCarNum(String input) {
+        if (hasOnlyOneCar(input)) {
             throw new IllegalArgumentException(ErrorMessage.EXCEPTION_ONLY_ONE_CAR.getMessage());
         }
     }
 
     private void validateValueMissing(String input) {
-        if (input.endsWith(INPUT_DELIMITER)) {
+        if (isValueMissing(input)) {
             throw new IllegalArgumentException(ErrorMessage.EXCEPTION_VALUE_MISSING.getMessage());
         }
+    }
+
+    private static boolean hasOnlyOneCar(String input) {
+        return !input.contains(INPUT_DELIMITER);
+    }
+
+    private static boolean isValueMissing(String input) {
+        return input.endsWith(INPUT_DELIMITER);
     }
 
     private String userInput() {

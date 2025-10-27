@@ -12,6 +12,7 @@ public class InputView {
     public static final String INPUT_INFORMATION = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     public static final String INPUT_TRY_NUM_INFORMATION = "시도할 횟수는 몇 회인가요?";
     public static final String INPUT_DELIMITER = ",";
+    public static final int INPUT_DELIMITER_LIMIT = -1;
 
     private InputView() {
     }
@@ -40,7 +41,7 @@ public class InputView {
     }
 
     public Cars parseInputToCars(String input) {
-        List<Car> cars = Arrays.stream(input.split(INPUT_DELIMITER))
+        List<Car> cars = Arrays.stream(input.split(INPUT_DELIMITER, INPUT_DELIMITER_LIMIT))
                 .map(Car::of).toList();
         return new Cars(cars);
     }

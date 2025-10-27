@@ -1,12 +1,12 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -59,6 +59,15 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("a,a,c", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("[ERROR] 중복되는 차의 이름이 있습니다.")
+        );
+    }
+
+    @Test
+    void 값_누락_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,b,", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("[ERROR] 구분자 뒤의 값이 누락되었습니다.")
         );
     }
 

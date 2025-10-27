@@ -1,9 +1,7 @@
 package racingcar.domain;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.exception.ErrorMessage;
 
 public class Cars{
@@ -11,6 +9,7 @@ public class Cars{
 
     public Cars(List<Car> cars) {
         validateCarNameLength(cars);
+        validateDuplicateCarName(cars);
         this.cars = List.copyOf(cars);
     }
 
@@ -23,11 +22,19 @@ public class Cars{
     }
 
     private void validateDuplicateCarName(List<Car> cars) {
-//        for (Car car : cars ) {
-//            if (car.getName().length() > 5) {
-//                throw new IllegalArgumentException(ErrorMessage.EXCEPTION_DUPLICATED_CAR_NAME.getMessage());
-//            }
-//        }
+
+        long distinctCarLength = cars.stream()
+                .map(Car::getName)
+                .distinct()
+                .count();
+
+        boolean isCarDupl = cars.size() == distinctCarLength;
+
+        if (!isCarDupl) {
+            throw new IllegalArgumentException(ErrorMessage.EXCEPTION_DUPLICATED_CAR_NAME.getMessage());
+        }
+
+
     }
 
     public List<Car> getCars() {

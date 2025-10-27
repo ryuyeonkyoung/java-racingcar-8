@@ -41,9 +41,13 @@ public class Cars{
         return Collections.unmodifiableList(cars);
     }
 
+    public int getMaxPosition() {
+        return cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+    }
+
     public List<Car> getWinners() {
         if (cars.isEmpty()) return List.of();
-        int max = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        int max = getMaxPosition();
         return cars.stream()
                 .filter(c -> c.getPosition() == max)
                 .toList();
@@ -51,6 +55,12 @@ public class Cars{
 
     public List<String> getWinnerNames() {
         return getWinners().stream().map(Car::getName).toList();
+    }
+
+    public List<String> toDisplayLines() {
+        return cars.stream()
+                .map(c -> c.getName() + " : " + "-".repeat(c.getPosition()))
+                .toList();
     }
 
 }

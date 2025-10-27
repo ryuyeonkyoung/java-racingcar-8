@@ -18,15 +18,15 @@ public class Car implements Comparable<Car>{
         return other.position - this.position;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
+    int getPosition() {
         return position;
     }
 
+    String getName() {
+        return name;
+    }
+
     public Car move(Car car) {
-        return new Car(car.getName(), car.getPosition() + 1);
+        return new Car(name, position + 1);
     }
 }

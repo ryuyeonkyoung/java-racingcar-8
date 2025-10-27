@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
 public class OutputView {
@@ -27,16 +26,9 @@ public class OutputView {
     }
 
     public void printResult(Cars cars) {
-        for (Car car : cars.getCars()) {
-            printPosition(car);
+        for (String line : cars.toDisplayLines()) {
+            System.out.println(line);
         }
-        System.out.println();
-    }
-
-    public void printPosition(Car car) {
-        System.out.printf(car.getName() + " : ");
-        String carStep = "-".repeat(car.getPosition());
-        System.out.printf(carStep);
         System.out.println();
     }
 

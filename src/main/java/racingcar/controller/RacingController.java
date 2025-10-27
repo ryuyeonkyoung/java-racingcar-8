@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
@@ -19,7 +20,7 @@ public class RacingController {
     public void start() {
         Cars cars = inputView.inputCars();
         int tryNum = inputView.inputTryNum();
-        outputView.printResults(racingService.startRacing(tryNum, cars));
-
+        List<Cars> history = racingService.startRacing(tryNum, cars);
+        outputView.printResults(history);
     }
 }

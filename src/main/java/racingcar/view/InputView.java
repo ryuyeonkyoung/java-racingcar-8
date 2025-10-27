@@ -40,9 +40,7 @@ public class InputView {
     // ??
     public Cars parseInputToCars(String input) {
         List<Car> cars = Arrays.stream(input.split(","))
-                .map(s -> {
-                    return Car.of(s, 0);
-                }).toList();
+                .map(Car::of).toList();
         return new Cars(cars);
     }
 

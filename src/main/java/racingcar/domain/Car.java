@@ -4,13 +4,13 @@ public class Car implements Comparable<Car>{
     private final String name;
     private final int position;
 
-    public Car(String name, int position) {
+    private Car(String name, int position) {
         this.name = name;
         this.position = position;
     }
 
-    public static Car of (String name, int position) {
-        return new Car(name, position);
+    public static Car of (String name) {
+        return new Car(name, 0);
     }
 
     @Override
@@ -24,5 +24,9 @@ public class Car implements Comparable<Car>{
 
     public int getPosition() {
         return position;
+    }
+
+    public Car move(Car car) {
+        return new Car(car.getName(), car.getPosition() + 1);
     }
 }

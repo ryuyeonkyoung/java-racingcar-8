@@ -26,7 +26,7 @@ public class Car implements Comparable<Car>{
         return name;
     }
 
-    public Car move(Car car) {
+    public Car move() {
         return new Car(name, position + 1);
     }
 }

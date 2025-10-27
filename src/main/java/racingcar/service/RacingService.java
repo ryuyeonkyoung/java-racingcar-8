@@ -32,7 +32,7 @@ public class RacingService {
         if (!canMove()) {
             return car;
         }
-        return car.move(car);
+        return car.move();
     }
 
     public boolean canMove() {
